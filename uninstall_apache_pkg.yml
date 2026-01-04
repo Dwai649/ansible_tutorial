@@ -1,0 +1,23 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    
+
+  - name: Uinstall Tomcat apache server 
+    apt:
+      name: apache2
+      state: absent
+
+  - name: Uninstall php module for apache
+    apt:
+      name: libapache2-mod-php
+      state: absent
+  - name: upadte repo list
+    apt:
+      update_cache: true
+
+
+        
+
