@@ -1,22 +1,33 @@
 ---
 
-- hosts: all
+- name: Test Playbook 1
+  hosts: all
   become: true
+  
+  
+  
+  
   tasks:
     
 
-    #  - name: Install Tomcat apache server 
-    #apt:
-    # name: apache2
-    # state: latest
+   
+  - name: Install Tomcat apache server 
+    apt:
+      name: apache2
+      state: latest
+
+
 
   - name: Install php module for apache
     apt:
       name: libapache2-mod-php
       state: latest
+    when: ansible_distribution == "Ubuntu"
+  
   - name: upadte repo list
     apt:
       update_cache: true
+    when: ansible_distribution == "Red-Hat"
 
 
         
